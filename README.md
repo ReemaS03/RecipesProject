@@ -316,9 +316,7 @@ The column contains the year the recipe was submitted. By pulling out only the y
 
 We used DecisionTreeClassifier as our modeling algorithm and conducted GridSearchCV to tune the hyperparameters of max_depth and min_samples_split of the DecisionTreeClassifier. Decision trees are prone to high variance, and the hyperparameters we chose serve to control the variance and avoid overfitting the training set. The best combination of the hyperparameters is 10 for the max_depth and 2 for the min_samples_split.
 
-The metric, **F1 Score**, of the final model is **0.78**, which is a 0.09 increase from the F1 Score of the baseline model. 
-I think the reason I could not increase the score more is that the dataset mostly contians recipes with high ratings, 4 and 5. So, this imbalance of rating make it difficult to build a model with high score.
-
+The metric, **F1 Score**, of the final model is **0.78**, which is a 0.09 increase from the F1 Score of the baseline model. This improvement indicates that the additional features and hyperparameter tuning helped the model capture more nuances in the data, leading to better predictions. However, the challenge remains with the dataset's imbalance, as it predominantly contains high ratings (4 and 5), which affects the model's ability to accurately predict lower ratings. I think the reason I could not increase the score more is that the dataset mostly contains recipes with high ratings, 4 and 5. So, this imbalance of rating makes it difficult to build a model with a higher score.
 
 
 ## Fairness Analysis

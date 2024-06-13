@@ -255,6 +255,12 @@ The reason I chose permutation test is that we do not have any information of a 
 
 To run the test, we first split the data points into two groups, high-protein, which are recipes with proportion of protein higher than the mean proportion of protein, and the rest of the data points are in the low-protein group. The **observed statistic** is **-0.023427824701777844**. Then I shuffled the ratings for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic. We got a **p-value** of **0.0**.
 
+<iframe
+  src="assets/perm_test.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 <iframe
   src="assets/fairness_analysis_plot.html"

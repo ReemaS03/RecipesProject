@@ -246,7 +246,6 @@ To check the question, we ran a **permutation test** with the following hypothes
 **Null Hypothesis:** People rate all recipes on the same scale, regardless of their protein content.
 
 **Alternative Hypothesis:** People rate high-protein recipes higher than low-protein recipes.
-# Test Statistic: The difference in mean ratings between high-protein and low-protein recipes.
 
 **Test Statistic:** The difference in mean ratings between high-protein and low-protein recipes.
 

@@ -177,7 +177,37 @@ For this section, we investigated the relationship between the cooking time in m
 
 The graph shows that as cooking time increases, the proportion of protein in a recipe fluctuates significantly. Recipes with longer cooking times can vary widely in protein content, indicating a mix of high-protein and low-protein dishes. The mean and median lines for protein proportion follow similar trends, especially for shorter cooking times, suggesting consistency in protein content. However, for longer cooking times, these lines show more fluctuation, indicating greater variability. This suggests that recipes with longer cooking durations are more diverse in their nutritional profiles, with some being highly proteiny and others not.
 
+<iframe
+  src="assets/interesting.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
+## Assessment of Missingness
+
+Columns `'date'`, `'rating'`, and `'review'`, in the merged dataset have a lot of missing values, so I decided to assess the missingness on the dataframe.
+
+### NMAR Analysis
+
+I believe that the missingness of the `'review'` column is NMAR, because people are more likely to leave it empty. Since most people do not usually spend a lot of time writing a review unless they really love or really hate teh recipe.
+
+### Missingness Dependency
+
+WNext, I examined the missingness of `'rating'` in the merged DataFrame by testing the dependency of its missingness. We want to check if the missiness in the `'rating'` column depends on the column `'n_ingredients'`, which is the number fo ingredients in a recipe, or the column `'minutes'`, which is the cooking time in minutes of the recipe.
+
+> Number of Ingredients and Rating
+**Null Hypothesis:** The missingness of ratings does not depend on the number of ingredients in the recipe.
+
+**Alternate Hypothesis:** The missingness of ratings does depend on the number of ingredients in the recipe.
+
+**Test Statistic:** The absolute difference of mean number of ingredients between the group with missing ratings and the group without missing ratings.
+
+**Significance Level:** 0.05
+dist here
+
+I ran a permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions using the test statistic I mentioned earlier.
+dist here
 
 <iframe
   src="assets/fairness_analysis_plot.html"

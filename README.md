@@ -143,7 +143,12 @@ The cleaned dataframe got 234429 rows and 26 columns. Here are the first 3 rows 
 
 For this analysis, we examined the distribution of the proportion of protein in a recipe. As the plot below shows, the distribution is mostly skewed to the right, meaning that most of the recipes have a low proportion of protein. There is also a decreasing trend, except for zero, whic can indicate that as the proportion of protein in recipes increases, the number of recipes decreases.
 
-
+<iframe
+  src="assets/dist_prop_protein.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 <iframe
   src="assets/fairness_analysis_plot.html"

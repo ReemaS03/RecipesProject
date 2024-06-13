@@ -43,7 +43,57 @@ By trying to analyze my question to find an answer, it can lead us to getting in
 
 ## Data Cleaning and Exploratory Data Analysis
 
+To make the analysis better, I performed the following steps to clean the data:
 
+1. Left merge the recipes and interactions datasets on id and recipe_id.
+
+   - This helps match the unique recipes with their rating and review, leaving us with one combined dataset instead of two dataset.
+
+1. Check data types of all the columns.
+
+   - This step helps ensure that the data types are appropriate for the dataset and our analysis, or if we need to conduct data type conversion.
+   - | Column             | Description |
+     | :----------------- | :---------- |
+     | `'name'`           | object      |
+     | `'id'`             | int64       |
+     | `'minutes'`        | int64       |
+     | `'contributor_id'` | int64       |
+     | `'submitted'`      | object      |
+     | `'tags'`           | object      |
+     | `'nutrition'`      | object      |
+     | `'n_steps'`        | int64       |
+     | `'steps'`          | object      |
+     | `'description'`    | object      |
+     | `'ingredients'`    | object      |
+     | `'n_ingredients'`  | int64       |
+     | `'user_id'`        | float64     |
+     | `'recipe_id'`      | float64     |
+     | `'date'`           | object      |
+     | `'rating'`         | float64     |
+     | `'review'`         | object      |
+
+1. Fill all ratings of 0 with np.nan.
+
+   - We do this step because rating is usually on a scale from 1 to 5, 1 being the lowest rating and 5 being the highest rating. So, a rating of 0 means missing values in rating. So, to avoid bias in the ratings, it is better to fill the values of 0 with np.nan.
+
+1. Add column `'average_rating'`, which contains the average rating per recipe.
+
+   - As recipes have different rating from different users, taking an average of all the ratings could help get a better understanding of the rating of a given recipe.
+
+1. Split values in the nutrition column to individual columns of floats.
+
+   - Although the values in the nutrition column look like a list, they are not. They are objects that behave like strings. Looking back at the desciption of the columns, we can see what each value in the list mean. So, we can apply a function that split the values in columns and set their type to floats. This way we can perform calculations using those columns. 
+
+1. Convert date and submitted to datetime.
+
+   - Those two columns are stored as objects, but it is better to convert them to datetime as it allows to perform analysis on trends over time.
+
+1. Add `'protein_category'` to the dataframe
+
+   - `'protein_category'` is a column that contains "proteiny" or "non-proteiny" depending on if the proportion of protein in the recipe is above or below the average proportion of protein in the dataset. This help separate the recipes into two groups, ones that are high in protein and ones that are low in protein. 
+
+1. Add `'prop_protein'` to the dataframe
+   - prop_sugar is the proportion of protein of the total calories in a recipe. To calculate this, we use the values in the protein (PDV) column and multiply by 4 since there are 4 calories in 1 gram of protein. Afterward, we get the number of calories of protein, then divide by the total amount of calories in the recipe to get the proportion of protein of the total calories. This makes our analysis more efficent as we would have the values between 0 and 1 instead of risking hacing extremely large or small. 
 
 
 <iframe

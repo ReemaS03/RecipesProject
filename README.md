@@ -204,10 +204,31 @@ WNext, I examined the missingness of `'rating'` in the merged DataFrame by testi
 **Test Statistic:** The absolute difference of mean number of ingredients between the group with missing ratings and the group without missing ratings.
 
 **Significance Level:** 0.05
-dist here
 
 I ran a permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions using the test statistic I mentioned earlier.
-dist here
+??????????
+
+The **observed statistic** of **0.1607379066254797** is the red line on the graph. Since the **p_value** that we found **(0.0)** is < 0.05 which is the significance level that we set, we **reject the null hypothesis**. The missingness of `'rating'` does  depend on the `'n_ingredients'`, which is the number of ingredients in a recipe.
+
+> Cooking Time and Rating
+**Null Hypothesis:** The missingness of ratings does not depend on the cooking time of the recipe in minutes.
+
+**Alternate Hypothesis:** The missingness of ratings does depend on the cooking time of the recipe in minutes.
+
+**Test Statistic:** The absolute difference of mean cooking time (in minutes) between the group with missing ratings and the group without missing ratings.
+
+**Significance Level:** 0.05
+
+I ran a permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions using the test statistic I mentioned earlier.
+
+<iframe
+  src="assets/minutes_rating.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+The **observed statistic** of **51.45237039852127** is the red line on the graph. Since the **p_value** that we found **(0.103)** is > 0.05 which is the significance level that we set, we **fail to reject the null hypothesis**. The missingness of `'rating'` does not depend on the `'minutes'`, which is the cooking time in minutes of a recipe.
 
 <iframe
   src="assets/fairness_analysis_plot.html"

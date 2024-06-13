@@ -150,6 +150,10 @@ For this analysis, we examined the distribution of the proportion of protein in 
   frameborder="0"
 ></iframe>
 
+### Bivariate Analysis
+
+For this analysis, we examined the distribution of the rating of the recipe conditioned between the non-proteiny recipes and proteiny recipes. The graph below shows that recipes with rating of 4 and 5 are more likely to be non-proteiny recipes while the recipes with rating of 1, 2, and 3 are more likely to be non-proteiny recipes as well but the difference is smaller.
+
 <iframe
   src="assets/fairness_analysis_plot.html"
   width="800"

@@ -236,6 +236,26 @@ I ran a permutation test by shuffling the missingness of rating for 1000 times t
 
 The **observed statistic** of **51.45237039852127** is the red line on the graph. Since the **p_value** that we found **(0.103)** is > 0.05 which is the significance level that we set, we **fail to reject the null hypothesis**. The missingness of `'rating'` does not depend on the `'minutes'`, which is the cooking time in minutes of a recipe.
 
+## Hypothesis Testing
+
+We want to see if people rate proteiny recipes and non-proteiny recipes on the same scale. By proteiny recipes, we mean recipes with a proportion of protein higher than the average proportion of protein. Proportion of protein is referring the column `'prop_protein'`.
+
+To check the question, we ran a **permutation test** with the following hypotheses, test statistic, and significance level.
+
+**Null Hypothesis:** People rate all recipes on the same scale, regardless of their protein content.
+
+**Alternative Hypothesis:** People rate high-protein recipes higher than low-protein recipes.
+# Test Statistic: The difference in mean ratings between high-protein and low-protein recipes.
+
+**Test Statistic:** The difference in mean ratings between high-protein and low-protein recipes.
+
+**Significance Level:** 0.05
+
+The reason I chose permutation test is that we do not have any information of a population, and we want to see if the two distributions look like they come from the same population. We proposed that **People rate high-protein recipes higher than low-protein recipes** because people might be want recipes that they think are healthier by having a high amount fo protein. I used rating, because I want to consider the rating of every user. For the test statistic, I chose the difference in mean of the ratings of two groups of recipes instead of absolute difference in mean because we have a directional hypothesis. Using the difference in mean between the two groups, help us see what type of recipes typically have a higher rating, which answers our question.
+
+To run the test, we first split the data points into two groups, high-protein, which are recipes with proportion of protein higher than the mean proportion of protein, and the rest of the data points are in the low-protein group. The **observed statistic** is **-0.023427824701777844**. Then I shuffled the ratings for 1000 times to collect 1000 simulating mean differences in the two distributions as described in the test statistic. We got a **p-value** of **0.0**.
+
+
 <iframe
   src="assets/fairness_analysis_plot.html"
   width="800"

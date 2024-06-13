@@ -219,6 +219,7 @@ I ran a permutation test by shuffling the missingness of rating for 1000 times t
 The **observed statistic** of **0.1607379066254797** is the red line on the graph. Since the **p_value** that we found **(0.0)** is < 0.05 which is the significance level that we set, we **reject the null hypothesis**. The missingness of `'rating'` does  depend on the `'n_ingredients'`, which is the number of ingredients in a recipe.
 
 > Cooking Time and Rating
+
 **Null Hypothesis:** The missingness of ratings does not depend on the cooking time of the recipe in minutes.
 
 **Alternate Hypothesis:** The missingness of ratings does depend on the cooking time of the recipe in minutes.

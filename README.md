@@ -262,9 +262,70 @@ To run the test, we first split the data points into two groups, high-protein, w
   frameborder="0"
 ></iframe>
 
+#### Conclusion of Permutation Test
+
+Since the **p-value** that we found **(0.0)** is less than the significance level of 0.05, we **reject the null hypothesis**. People do not rate all the recipes on the same scale, and they tend to rate high-protein recipes higher. One explanation for this founding could be that people relate healthy food with recipes with high-protein.
+
+## Framing a Prediction Problem
+
+I plan to **predict rating of a recipe** and this would be a **classification problem** since we can see rating as a ordinal categorical variable if we round the average rating so we only have [1, 2, 3, 4, 5]. To address our prediction problem, we will build a multi-class classifier as our average ratings have 5 options for values that the model will predict from.
+
+I chose the rating of recipes because it can help identify which recipes are likely to be well-received by users, providing valuable insights for recipe creators and food enthusiasts.
+
+To evaluate our model, we will use the f1 score instead of accuracy, because the distribution for the ratings are heavily skewed left with most ratings concentrated in the higher ratings (4-5). If we use accuracy, the model's performance may be misleading due to the imbalanced classes.
+
+## Baseline Model
+
+For our baseline model, we are utilizing a decision tree classifier and split the data points into training and test sets. The features we are using for this model are 'calories (#)', 'total fat (PDV)', 'minutes', and 'n_ingredients'.
+
+We applied median imputation to handle missing values and scaled the numerical features using StandardScaler to ensure that all features are on a comparable scale. This step is essential for training the model appropriately.
+
+The metric, **F1 score**, of this model is **0.695**. The F1 score for each rating category are 0.00, 0.00, 0.00, 0.00, and 0.88 for ratings of 1s, 2s, 3s, 4s, and 5s respectively. The metrics let us know that the model predicts better for rating of 5s and not as accurately for the lower ratings. The reason for this could be that there are more recipes with rating 5s in the dataset compared to other ratings. With more data points, the model predicted better for higher ratings.
+
+## Final Model
+For the final model, we used 'minutes', 'calories (#)', 'protein_to_carbs', 'log_calories', and 'submitted_year' as the features.
+
+`'minutes'`
+The column is the cooking time of the recipe in minutes. By constructing a bivariate table of the 'minutes' and 'rating', we learned that recipes that take longer to cook tend to have more diverse ratings. Standardizing this feature ensures that cooking times are in a comparable range, given the presence of recipes with extremely long cooking times.
+
+`'calories (#)'`
+The column contains the total calories of the recipe. By examining the relationship between 'calories (#)' and 'rating', we found that recipes with higher ratings typically have fewer calories. Lower calories often indicate that a recipe is healthier, which logically aligns with higher ratings. To handle outliers effectively, we used StandardScaler to scale this feature.
+
+`'protein_to_carbs'`
+This newly created feature represents the ratio of protein to carbohydrates in the recipe. Higher values suggest a healthier recipe with more protein relative to carbs, which could correlate with better ratings. This feature is kept in its raw form as it directly represents the healthiness of the recipe.
+
+`'log_calories'`
+This feature is the logarithm of the total calories to handle the wide range of calorie values and reduce the impact of extreme outliers. Log transformation helps in stabilizing the variance and making the feature distribution more normal-like, which is beneficial for many machine learning algorithms.
+
+`'submitted_year'`
+The column contains the year the recipe was submitted. By pulling out only the year from the submission date, we found that recipes submitted in recent years tend to have lower ratings, possibly due to the lack of novelty. This trend could be useful in improving our model.
+
+We used DecisionTreeClassifier as our modeling algorithm and conducted GridSearchCV to tune the hyperparameters of max_depth and min_samples_split of the DecisionTreeClassifier. Decision trees are prone to high variance, and the hyperparameters we chose serve to control the variance and avoid overfitting the training set. The best combination of the hyperparameters is 10 for the max_depth and 2 for the min_samples_split.
+
+The metric, **F1 Score**, of the final model is **0.78**, which is a 0.09 increase from the F1 Score of the baseline model. 
+I think the reason I could not increase the score more is that the dataset mostly contians recipes with high ratings, 4 and 5. So, this imbalance of rating make it difficult to build a model with high score.
+
+
+
+## Fairness Analysis
+
+For our fairness analysis, we split the recipes into two groups: high calories and low calories. We designated high calorie recipes to be ones with calories > 301.1 and low calorie recipes to be ones with calories <= 301.1. We found that the median calories for our dataset is 301.1, which is why we chose it as the threshold. We used the median instead of the mean because we previously found that calories had many high outliers which can skew our results.
+
+We chose to evaluate the precision parity of the model for the two groups because we think it’s more important for the model to correctly identify the rating of a recipe among all instances of that rating. False positives would mislead users with the incorrectly labeled ratings. For example, if we predicted recipes with lower calories to have a bad rating, people would be discouraged from trying them. For recipes with lower calories, it wouldn’t be good to mislabel them, as low-calorie recipes may be healthier for people.
+
+Null Hypothesis: Our model is fair. Its precision for recipes with higher calories and lower calories are roughly the same, and any differences are due to random chance.
+
+Alternative Hypothesis: Our model is unfair. Its precision for recipes with lower calories is lower than its precision for recipes with higher calories.
+
+Test Statistic: Difference in precision (low calories - high calories)
+
+Significance Level: 0.05
+
 <iframe
   src="assets/fairness_analysis_plot.html"
   width="800"
   height="600"
   frameborder="0"
 ></iframe>
+
+To run the permutation test, I created a new column is_high_calories to differentiate between the low and high calorie recipes. Taking the difference in their precision, I got an observed test statistic of 0.0036. I shuffled the is_high_calories column 1000 times to collect 1000 simulated differences in the two distributions as described in the test statistic. Then, I ran the permutation test and got a p-value of 0.72. Since the p-value of 0.72 is greater than 0.05, we fail to reject the null hypothesis that our model is fair. The model’s precision for recipes with lower calories is not significantly different from its precision for recipes with higher calories.

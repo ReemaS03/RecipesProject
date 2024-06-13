@@ -129,6 +129,21 @@ Here are all the columns of the cleaned df.
 | `'protein_category'`    | object         |
 | `'prop_protein'`        | float64        |
 
+The cleaned dataframe got 234429 rows and 26 columns. Here are the first 3 rows of our cleaned dataframe. Since there is a lot of columns for the merged dataframe, we selected the columns that are most relevant to display.
+|   calories (#) |   protein (PDV) |   prop_protein |   rating |   average_rating |
+|---------------:|----------------:|---------------:|---------:|-----------------:|
+|          138.4 |               3 |      0.0867052 |        4 |                4 |
+|          595.1 |              13 |      0.0873803 |        5 |                5 |
+|          194.8 |              22 |      0.451745  |        5 |                5 |
+|          194.8 |              22 |      0.451745  |        5 |                5 |
+|          194.8 |              22 |      0.451745  |        5 |                5 |
+
+
+### Univariate Analysis
+
+For this analysis, we examined the distribution of the proportion of protein in a recipe. As the plot below shows, the distribution is mostly skewed to the right, meaning that most of the recipes have a low proportion of protein. There is also a decreasing trend, except for zero, whic can indicate that as the proportion of protein in recipes increases, the number of recipes decreases.
+
+
 
 <iframe
   src="assets/fairness_analysis_plot.html"

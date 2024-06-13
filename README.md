@@ -206,7 +206,13 @@ WNext, I examined the missingness of `'rating'` in the merged DataFrame by testi
 **Significance Level:** 0.05
 
 I ran a permutation test by shuffling the missingness of rating for 1000 times to collect 1000 simulating mean differences in the two distributions using the test statistic I mentioned earlier.
-??????????
+
+<iframe
+  src="assets/ningredients_rating.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
 
 The **observed statistic** of **0.1607379066254797** is the red line on the graph. Since the **p_value** that we found **(0.0)** is < 0.05 which is the significance level that we set, we **reject the null hypothesis**. The missingness of `'rating'` does  depend on the `'n_ingredients'`, which is the number of ingredients in a recipe.
 

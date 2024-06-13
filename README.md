@@ -95,6 +95,40 @@ To make the analysis better, I performed the following steps to clean the data:
 1. Add `'prop_protein'` to the dataframe
    - prop_sugar is the proportion of protein of the total calories in a recipe. To calculate this, we use the values in the protein (PDV) column and multiply by 4 since there are 4 calories in 1 gram of protein. Afterward, we get the number of calories of protein, then divide by the total amount of calories in the recipe to get the proportion of protein of the total calories. This makes our analysis more efficent as we would have the values between 0 and 1 instead of risking hacing extremely large or small. 
 
+#### Result
+Here are all the columns of the cleaned df.
+
+
+| Column                  | Description    |
+| :---------------------- | :------------- |
+| `'name'`                | object         |
+| `'id'`                  | int64          |
+| `'minutes'`             | int64          |
+| `'contributor_id'`      | int64          |
+| `'submitted'`           | datetime64[ns] |
+| `'tags'`                | object         |
+| `'nutrition'`           | object         |
+| `'n_steps'`             | int64          |
+| `'steps'`               | object         |
+| `'description'`         | object         |
+| `'ingredients'`         | object         |
+| `'n_ingredients'`       | int64          |
+| `'user_id'`             | float64        |
+| `'recipe_id'`           | float64        |
+| `'date'`                | datetime64[ns] |
+| `'rating'`              | float64        |
+| `'review'`              | object         |
+| `'average rating'`      | object         |
+| `'calories (#)'`        | float64        |
+| `'total fat (PDV)'`     | float64        |
+| `sugar (PDV)'`          | float64        |
+| `'sodium (PDV)'`        | float64        |
+| `'protein (PDV)'`       | float64        |
+| `'saturated fat (PDV)'` | float64        |
+| `'carbohydrates (PDV)'` | float64        |
+| `'protein_category'`    | object         |
+| `'prop_protein'`        | float64        |
+
 
 <iframe
   src="assets/fairness_analysis_plot.html"

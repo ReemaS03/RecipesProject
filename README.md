@@ -155,6 +155,31 @@ For this analysis, we examined the distribution of the proportion of protein in 
 For this analysis, we examined the distribution of the rating of the recipe conditioned between the non-proteiny recipes and proteiny recipes. The graph below shows that recipes with rating of 4 and 5 are more likely to be non-proteiny recipes while the recipes with rating of 1, 2, and 3 are more likely to be non-proteiny recipes as well but the difference is smaller.
 
 <iframe
+  src="assets/bivariate.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
+### Interesting Aggregates
+
+For this section, we investigated the relationship between the cooking time in minutes and proportion of protein of the recipes. First, I created a dataframe, `'filter_df'`, which store the cooking time in minutes without outliers using the IQR method. Then, grouping the cooking time and proportion of protein using a pivot table. You can see some fo the rows of the pivot table below:
+
+| minutes | mean      | median      | min                   | max                   |
+| ------: | --------: | ----------: | --------------------: | --------------------: |
+|       0 | 0.722707  |   0.722707  |             0.722707  |             0.722707  |
+|       1 |  0.072652 |    0        |                     0 |              0.938683 |
+|       2 |  0.118440 |    0.055769 |                     0 |               1       |
+|     ... |       ... |         ... |                   ... |                   ... |
+|     117 | 0.471328  |   0.471328  |             0.471328  |             0.471328  |
+|     118 |  0.057143 |    0.057143 |              0.057143 |              0.057143 |
+|     120 |  0.315905 |   0.263379  |                     0 |               1       |
+
+The graph shows that as cooking time increases, the proportion of protein in a recipe fluctuates significantly. Recipes with longer cooking times can vary widely in protein content, indicating a mix of high-protein and low-protein dishes. The mean and median lines for protein proportion follow similar trends, especially for shorter cooking times, suggesting consistency in protein content. However, for longer cooking times, these lines show more fluctuation, indicating greater variability. This suggests that recipes with longer cooking durations are more diverse in their nutritional profiles, with some being highly proteiny and others not.
+
+
+
+<iframe
   src="assets/fairness_analysis_plot.html"
   width="800"
   height="600"

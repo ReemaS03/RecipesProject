@@ -280,9 +280,21 @@ To evaluate our model, we will use the f1 score instead of accuracy, because the
 
 For our baseline model, we are utilizing a decision tree classifier and split the data points into training and test sets. The features we are using for this model are 'calories (#)', 'total fat (PDV)', 'minutes', and 'n_ingredients'.
 
-We applied median imputation to handle missing values and scaled the numerical features using StandardScaler to ensure that all features are on a comparable scale. This step is essential for training the model appropriately.
+Features:
+Quantitative Features:
+'calories (#)': Total number of calories in the recipe.
+'total fat (PDV)': Percentage of daily value of total fat in the recipe.
+'minutes': Cooking time of the recipe in minutes.
+'n_ingredients': Number of ingredients used in the recipe.
+Preprocessing:
 
-The metric, **F1 score**, of this model is **0.695**. The F1 score for each rating category are 0.00, 0.00, 0.00, 0.00, and 0.88 for ratings of 1s, 2s, 3s, 4s, and 5s respectively. The metrics let us know that the model predicts better for rating of 5s and not as accurately for the lower ratings. The reason for this could be that there are more recipes with rating 5s in the dataset compared to other ratings. With more data points, the model predicted better for higher ratings.
+Handling Missing Values: We applied median imputation to handle missing values in the dataset.
+Scaling: We scaled the numerical features using StandardScaler to ensure that all features are on a comparable scale. This step is essential for training the model appropriately.
+
+The metric, **F1 score**, of this model is **0.695**. The F1 score for each rating category are 0.00, 0.00, 0.00, 0.00, and 0.88 for ratings of 1s, 2s, 3s, 4s, and 5s respectively. These metrics indicate that the model predicts better for ratings of 5s and not as accurately for the lower ratings. The reason for this could be that there are more recipes with a rating of 5 in the dataset compared to other ratings. With more data points, the model performed better for higher ratings.
+
+Goodness of the Model: The current model performs well for predicting recipes with higher ratings (5s) but struggles with lower ratings. This is likely due to the imbalanced distribution of ratings in the dataset. Given this imbalance, the model's performance can be considered reasonable but leaves room for improvement, especially in accurately predicting lower ratings.
+
 
 ## Final Model
 For the final model, we used 'minutes', 'calories (#)', 'protein_to_carbs', 'log_calories', and 'submitted_year' as the features.

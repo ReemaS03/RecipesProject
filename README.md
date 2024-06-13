@@ -198,6 +198,7 @@ I believe that the missingness of the `'review'` column is NMAR, because people 
 WNext, I examined the missingness of `'rating'` in the merged DataFrame by testing the dependency of its missingness. We want to check if the missiness in the `'rating'` column depends on the column `'n_ingredients'`, which is the number fo ingredients in a recipe, or the column `'minutes'`, which is the cooking time in minutes of the recipe.
 
 > Number of Ingredients and Rating
+
 **Null Hypothesis:** The missingness of ratings does not depend on the number of ingredients in the recipe.
 
 **Alternate Hypothesis:** The missingness of ratings does depend on the number of ingredients in the recipe.

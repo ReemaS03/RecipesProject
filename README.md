@@ -1,6 +1,6 @@
 # Evaluating the Relationship Between the Amount of Protein and Average Rating of Recipes
 
-Author: Reema 
+Author: Reema Alsaeed
 
 ## Overview
 
@@ -179,7 +179,7 @@ For this section, we investigated the relationship between the cooking time in m
 The graph shows that as cooking time increases, the proportion of protein in a recipe fluctuates significantly. Recipes with longer cooking times can vary widely in protein content, indicating a mix of high-protein and low-protein dishes. The mean and median lines for protein proportion follow similar trends, especially for shorter cooking times, suggesting consistency in protein content. However, for longer cooking times, these lines show more fluctuation, indicating greater variability. This suggests that recipes with longer cooking durations are more diverse in their nutritional profiles, with some being highly proteiny and others not.
 
 <iframe
-  src="assets/interesting_plot.html"
+  src="assets/inter_agg_plot.html"
   width="800"
   height="600"
   frameborder="0"

@@ -313,7 +313,7 @@ I think the reason I could not increase the score more is that the dataset mostl
 
 For our fairness analysis, we split the recipes into two groups: high calories and low calories. We designated high calorie recipes to be ones with calories > 301.1 and low calorie recipes to be ones with calories <= 301.1. We found that the median calories for our dataset is 301.1, which is why we chose it as the threshold. We used the median instead of the mean because we previously found that calories had many high outliers which can skew our results.
 
-We chose to evaluate the precision parity of the model for the two groups because we think it’s more important for the model to correctly identify the rating of a recipe among all instances of that rating. False positives would mislead users with the incorrectly labeled ratings. For example, if we predicted recipes with lower calories to have a bad rating, people would be discouraged from trying them. For recipes with lower calories, it wouldn’t be good to mislabel them, as low-calorie recipes may be healthier for people.
+I chose to evaluate the precision parity of the model for the two groups because I think it is more important for the model to correctly identify the rating of a recipe among all instances of that rating. False positives would mislead users with the incorrectly labeled ratings. As a bad rating would discouraged people from trying that recipe. For recipes with lower calories, it wouldn’t be good to mislabel them, because they might be healthier for people.
 
 Null Hypothesis: Our model is fair. Its precision for recipes with higher calories and lower calories are roughly the same, and any differences are due to random chance.
 

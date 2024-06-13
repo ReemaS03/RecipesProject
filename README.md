@@ -130,6 +130,7 @@ Here are all the columns of the cleaned df.
 | `'prop_protein'`        | float64        |
 
 The cleaned dataframe got 234429 rows and 26 columns. Here are the first 3 rows of our cleaned dataframe. Since there is a lot of columns for the merged dataframe, we selected the columns that are most relevant to display.
+
 |   calories (#) |   protein (PDV) |   prop_protein |   rating |   average_rating |
 |---------------:|----------------:|---------------:|---------:|-----------------:|
 |          138.4 |               3 |      0.0867052 |        4 |                4 |
